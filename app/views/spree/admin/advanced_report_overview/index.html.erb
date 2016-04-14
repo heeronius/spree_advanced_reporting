@@ -10,22 +10,17 @@
         </td>
     </tr>
     <tr>
-        <td width="33%">
-            <h3><%=t("adv_report.top_products")%></h3>
-            <div id="top_products_chart"></div>
-<!--             <h3>Top Taxons by Quantity</h3>
-            <div id="top_taxons_chart"></div>--> 
-        </td>
-        <td width="33%">
+        
+        <td width="col-md-6">
             <h3><%=t("adv_report.top_customers")%></h3>
             <div id="top_customers">
                 <%= raw @top_customers_report.ruportdata.to_html %>
             </div>
         </td>
-        <td width="33%">
+        <td width="col-md-6">
             <h3><%=t("adv_report.last_10_orders")%></h3>
             <div id="recent_orders">
-                <table class="tablesorter table-striped table-bordered">
+                <table class="tablesorter table table-striped table-bordered">
                     <thead><tr>
                             <th><%=t(:order_number)%></th>
                             <th><%=t("adv_report.items_count")%></th>
@@ -44,6 +39,11 @@
         </td>
     </tr>
 </table>
+
+            <h3><%=t("adv_report.top_products")%></h3>
+            <div id="top_products_chart"></div>
+<!--             <h3>Top Taxons by Quantity</h3>
+            <div id="top_taxons_chart"></div>--> 
 
 <% content_for :table_filter do %>
     <div class="report_details">
@@ -100,7 +100,7 @@
             <% end -%>
 
             var chart = new google.visualization.PieChart(document.getElementById('top_products_chart'));
-            chart.draw(product_data, {width: "100%", height: 300, title: ''});
+            chart.draw(product_data, {width: "100%", height: 500, title: ''});
             
         }
     </script>
