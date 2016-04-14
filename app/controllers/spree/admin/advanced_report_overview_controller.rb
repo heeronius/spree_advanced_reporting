@@ -13,7 +13,7 @@ class Spree::Admin::AdvancedReportOverviewController < Spree::Admin::BaseControl
 
     # From overview_dashboard, Cleanup eventually
     #orders = Spree::Order.find(:all, :order => "completed_at DESC", :limit => 10, :include => :line_items, :conditions => "completed_at is not null")
-    orders = Spree::Order.includes(:line_items,:user,:bill_address).where("completed_at is not null")
+    orders = Spree::Order.includes(:line_items,:user,:bill_address).where("completed_at is not null").limit(10)
 
     @last_orders = orders.inject([]) { |arr, o| arr << [o.bill_address.firstname, o.line_items.sum(:quantity), o.total, o.number]; arr }
    # @best_taxons =  Spree::Taxon.connection.select_rows("select t.name, count(li.quantity) from spree_line_items li inner join spree_variants v on
