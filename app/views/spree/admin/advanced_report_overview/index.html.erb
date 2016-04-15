@@ -65,7 +65,7 @@
 <% end %>
 
 <% content_for :head do -%>
-    <script src="http://www.google.com/jsapi"></script>
+    <script src="https://www.google.com/jsapi"></script>
     <script >
         google.load('visualization', '1', {'packages': ['corechart']}); 
     </script>
@@ -95,7 +95,7 @@
             product_data.addColumn('number', 'Revenue');
             product_data.addRows(<%= @top_products_report.ruportdata.size %>);
             <% @top_products_report.ruportdata.each_with_index do |p, i| %>
-                product_data.setValue(<%= i.to_s %>, 0, "<%= truncate(p.data["Product Name"], escape: false,length: 10) %> ");
+                product_data.setValue(<%= i.to_s %>, 0, "<%= truncate(p.data["Product Name"], escape: false,length: 20) %> ");
                 product_data.setValue(<%= i.to_s %>, 1, <%= p.data["Revenue"].to_s.gsub(/^\$/, '') %>);
             <% end -%>
 

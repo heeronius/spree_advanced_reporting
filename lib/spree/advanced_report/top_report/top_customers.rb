@@ -1,3 +1,4 @@
+include ActionView::Helpers::NumberHelper
 class Spree::AdvancedReport::TopReport::TopCustomers < Spree::AdvancedReport::TopReport
   def name
     "Top Customers"
@@ -24,10 +25,11 @@ class Spree::AdvancedReport::TopReport::TopCustomers < Spree::AdvancedReport::To
 
     self.ruportdata = Table(%w[email Units Revenue])
     data.inject({}) { |h, (k, v) | h[k] = v[:revenue]; h }.sort { |a, b| a[1] <=> b [1] }.reverse[0..limit].each do |k, v|
-      ruportdata << { "email" => data[k][:email], "Units" => data[k][:units], "Revenue" => data[k][:revenue] } 
+      revenue =  number_to_currency(data[k][:revenue], :unit => "VND", precision: 0, seperator: ".", format: "%n %u")
+      ruportdata << { "email" => data[k][:email], "Units" => data[k][:units], "Revenue" =>revenue } 
     end 
-    ruportdata.replace_column("Revenue") { |r| "%0.0f VND" % r.Revenue }
-    ruportdata.rename_column("email", "Customer Email")
+   # ruportdata.replace_column("Revenue") { |r| "%0.0f VND" % r.Revenue }
+   # ruportdata.rename_column("email", "Customer Email")
   end
 end
 
