@@ -36,7 +36,7 @@ module Spree
       params[:search][:completed_at_not_null] = true
       params[:search][:state_not_eq] = 'canceled'
 
-      search = Order.includes(:line_items ,:user,:bill_address).search(params[:search])
+      search = Order.includes(order_includes).search(params[:search])
       # self.orders = search.state_does_not_equal('canceled')
       self.orders = search.result
 
@@ -124,6 +124,10 @@ module Spree
 
     def order_count(order)
       self.product_in_taxon ? 1 : 0
+    end
+
+    def order_includes
+    [:line_items,:user,:bill_address]
     end
   end
 end
