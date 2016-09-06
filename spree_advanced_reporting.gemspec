@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.description = 'TODO: Add (optional) gem description here'
   s.required_ruby_version = '>= 2.0.0'
 
-  # s.author    = 'You'
+   s.author    = Mohamed Aden
   # s.email     = 'you@example.com'
   # s.homepage  = 'http://www.spreecommerce.com'
 
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 3.0.4'
+  s.add_dependency 'spree_core', '~> 3.1.0'
 
   s.add_development_dependency 'capybara', '~> 2.4'
   s.add_development_dependency 'coffee-rails'
