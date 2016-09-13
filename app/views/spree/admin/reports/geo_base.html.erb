@@ -47,7 +47,7 @@ data_<%= type.to_s %>.setValue(<%= i.to_s %>, 1, <%= p.data[@report.column].to_s
 
 var options_<%= type.to_s %> = { 'width' : '800px', 'height' : '500px' };
 <% if type == :state %> 
-    options_<%= type.to_s %>['region'] = 'EU';
+    options_<%= type.to_s %>['region'] = 'US';
         <% end -%>
 
 var <%= type.to_s %>_container = document.getElementById('<%= type.to_s %>_canvas');
